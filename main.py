@@ -29,22 +29,30 @@ def main():
     # Check for any keys that can't be changed into an integer
     if option_count.isnumeric():
 
-        # Take the user's option_count input to create a for loop to add their options to the choices list
-        for i in range(int(option_count)):
-            option = input('Option: ')
-            choices.append(option)
+      # Check for multiple choices
+      if int(option_count) > 1:
+          # Take the user's option_count input to create a for loop to add their options to the choices list
+          for i in range(int(option_count)):
+              option = input('Option: ')
+              choices.append(option)
 
-        # Shuffle choices list in order to get a randomized result multiple times, rather than the same random choice from the first run
-        for i in range(len(choices) + 1):
-            random.shuffle(choices)
+          # Shuffle choices list in order to get a randomized result multiple times, rather than the same random choice from the first run
+          for i in range(len(choices) + 1):
+              random.shuffle(choices)
 
-        decision = choices[0]
+          decision = choices[0]
 
-        # Display user's decision
-        print('\nYour randomized decision is ' + '"' + decision + '"' + '.')
+          # Display user's decision
+          print('\nYour randomized decision is ' + '"' + decision + '"' + '.')
 
-        # Ask user if they want to  restart the program
-        restart()
+          # Ask user if they want to  restart the program
+          restart()
+
+      else:
+        # If there isn't enough choices, restart the program
+        print("Not enough choices to choose from. Try again.")
+        print("\n" * 9)
+        main()
 
     # If key can't be changed into an integer, restart program
     else:
